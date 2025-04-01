@@ -1,9 +1,7 @@
 ﻿using Ucode.Core.Emuns;
 
 namespace Ucode.Core.Models
-{
-    namespace AcademicControl.API.Models
-    {
+{  
         public class Student
         {
             public long Id { get; set; }
@@ -15,12 +13,10 @@ namespace Ucode.Core.Models
 
             public EGender Gender { get; set; }
 
-
             public long CourseId { get; set; }
             public Course Course { get; set; } = null!;
 
             public string UserId { get; set; } = string.Empty;
-        }
-    }
+        }   
 
 }

@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ucode.Core.Models
-{
-    namespace AcademicControl.API.Models
-    {
+﻿namespace Ucode.Core.Models
+{ 
         public class Course
         {
             public long Id { get; set; }
@@ -19,6 +11,6 @@ namespace Ucode.Core.Models
 
             public string UserId { get; set; } = string.Empty;
         }
-    }
+  
 
 }

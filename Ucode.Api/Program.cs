@@ -1,7 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Ucode.Api.Data;
+using Ucode.Core.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurações para o Swagger
+// Configuraçao para acessar o Banco
 
+var cnnStr = builder
+    .Configuration
+    .GetConnectionString("DefaultConnection") ?? string.Empty;
+
+builder.Services.AddDbContext<AppDbContext>(x =>
+{
+    x.UseSqlServer(cnnStr);
+});
+
+
+// Configurações para o Swagger
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x =>
@@ -39,10 +55,9 @@ app.Run();
 public class Request
 {
     public string Name { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public DateTime BirthDate { get; set; }
+    public string Email { get; set; } = string.Empty;     
     public long CourseId { get; set; }
-    public string UserId { get; set; } = string.Empty;
+   
 }
 
 
@@ -50,21 +65,31 @@ public class Response
 {
     public long Id { get; set; }
     public string Name { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public DateTime BirthDate { get; set; }
+     public long CourseId { get; set; }
 }
 
-public class Handler
+public class Handler(AppDbContext context)
 {
-    // Faz o processo de criação e persiste no banco (simulado)
-    public Response Handle(Request request)
+        public Response Handle(Request request)
     {
-        return new Response
+        var student = new Student
         {
-            Id = 2,
             Name = request.Name,
             Email = request.Email,
-            BirthDate = request.BirthDate
+            CourseId = request.CourseId
+         
+        };
+
+        context.Students.Add(student);
+        context.SaveChanges();
+       
+        return new Response
+        {
+            Id = student.Id,
+            Name = request.Name,
+            CourseId = request.CourseId
         };
     }
 }
+
+

@@ -1,7 +1,5 @@
 ﻿namespace Ucode.Core.Models
-{
-    namespace AcademicControl.API.Models
-    {
+{   
         public class Grade
         {
             public long Id { get; set; }
@@ -14,6 +12,4 @@
 
             public string UserId { get; set; } = string.Empty;
         }
-    }
-
 }

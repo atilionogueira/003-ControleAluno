@@ -1,6 +1,4 @@
-﻿namespace Ucode.Core.Models
-{
-    namespace AcademicControl.API.Models
+﻿    namespace Ucode.Core.Models
     {
         public class Enrollment
         {
@@ -18,4 +16,3 @@
         }
     }
 
-}

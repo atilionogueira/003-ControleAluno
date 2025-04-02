@@ -135,9 +135,6 @@ namespace Ucode.Api.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CourseId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -163,8 +160,6 @@ namespace Ucode.Api.Migrations
                         .HasColumnType("VARCHAR");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
 
                     b.ToTable("Student", (string)null);
                 });
@@ -197,17 +192,6 @@ namespace Ucode.Api.Migrations
                         .IsRequired();
 
                     b.Navigation("Enrollment");
-                });
-
-            modelBuilder.Entity("Ucode.Core.Models.Student", b =>
-                {
-                    b.HasOne("Ucode.Core.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
                 });
 #pragma warning restore 612, 618
         }

@@ -41,18 +41,11 @@ namespace Ucode.Api.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Gender = table.Column<int>(type: "INT", nullable: false),
-                    CourseId = table.Column<long>(type: "bigint", nullable: false),
                     UserId = table.Column<string>(type: "VARCHAR(160)", maxLength: 160, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Student", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Student_Course_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Course",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -121,11 +114,6 @@ namespace Ucode.Api.Migrations
                 name: "IX_Grade_EnrollmentId",
                 table: "Grade",
                 column: "EnrollmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Student_CourseId",
-                table: "Student",
-                column: "CourseId");
         }
 
         /// <inheritdoc />
@@ -138,10 +126,10 @@ namespace Ucode.Api.Migrations
                 name: "Enrollment");
 
             migrationBuilder.DropTable(
-                name: "Student");
+                name: "Course");
 
             migrationBuilder.DropTable(
-                name: "Course");
+                name: "Student");
         }
     }
 }

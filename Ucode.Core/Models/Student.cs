@@ -11,11 +11,8 @@ namespace Ucode.Core.Models
             public DateTime CreatedAt { get; set; } = DateTime.Now;
             public DateTime? UpdatedAt { get; set; }
 
-            public EGender Gender { get; set; }
-
-            public long CourseId { get; set; }
-            public Course Course { get; set; } = null!;
-
+            public EGender Gender { get; set; }        
+          
             public string UserId { get; set; } = string.Empty;
         }   
 

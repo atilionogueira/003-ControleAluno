@@ -32,10 +32,7 @@ namespace Ucode.Core.Models
 
             builder.Property(x => x.Gender)
                 .IsRequired(true)
-                .HasColumnType("INT");
-
-            builder.Property(x => x.CourseId)
-                .IsRequired(true);
+                .HasColumnType("INT");         
 
             builder.Property(x => x.UserId)
                 .IsRequired(true)

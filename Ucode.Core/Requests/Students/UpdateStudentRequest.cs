@@ -4,8 +4,10 @@ using Ucode.Core.Emuns;
 
 namespace Ucode.Core.Requests.Students
 {
-    public class UpdateStudentRequest
+    public class UpdateStudentRequest : Request
     {
+        public long  Id { get; set; }
+
         [Required(ErrorMessage = "Nome inválido")]
         [MaxLength(100, ErrorMessage = "O nome deve conter até 100 caracteres")]
         public string Name { get; set; } = string.Empty;
